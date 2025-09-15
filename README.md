@@ -2,4 +2,4 @@
 # Intent-anoma
 
 
-website: https://github.com/Speedevs/Intent-anoma
+#website: https://speedevs.github.io/Intent-anoma/
