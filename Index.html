@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anoma Multichain Intents</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    .popup {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 50;
+    }
+    .popup-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%; max-width: 400px;
+    }
+    .popup-content input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .popup-content button {
+      background: #4f46e5;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-black">
+  <!-- Header -->
+  <header class="py-6 px-4 border-b border-gray-200 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <img src="https://speedevs.github.io/Anoma-ID/anoma.png" alt="Anoma Logo" class="w-10 h-10">
+      <h1 class="text-2xl font-bold">
+        <span class="text-red-500">Anoma</span> Multi Intents Bridge
+      </h1>
+    </div>
+    <button class="wallet-btn px-4 py-2 rounded-full bg-indigo-600 hover:bg-indigo-700 transition-colors flex items-center space-x-2 text-white">
+      <i data-feather="user" class="w-5 h-5"></i>
+      <span>Connect Wallet</span>
+    </button>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-4xl mx-auto py-8 px-4 space-y-6">
+    <section class="bg-gray-50 rounded-xl p-6 shadow-lg">
+      <h2 class="text-xl font-semibold mb-6 flex items-center">
+        <i data-feather="plus-circle" class="mr-2 text-indigo-400"></i> Create Intent
+      </h2>
+
+      <!-- Dropdowns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium">From Blockchain</label>
+          <select id="fromChain" class="w-full border rounded px-3 py-2">
+            <option>Ethereum</option>
+            <option>Polygon</option>
+            <option>Solana</option>
+            <option>Avalanche</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Ticker</label>
+          <select id="fromTicker" class="w-full border rounded px-3 py-2">
+            <option>ETH</option>
+            <option>USDT</option>
+            <option>USDC</option>
+            <option>DAI</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div>
+          <label class="block text-sm font-medium">To Blockchain</label>
+          <select id="toChain" class="w-full border rounded px-3 py-2">
+            <option>Ethereum</option>
+            <option>Polygon</option>
+            <option>Solana</option>
+            <option>Avalanche</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium">To Ticker</label>
+          <select id="toTicker" class="w-full border rounded px-3 py-2">
+            <option>ETH</option>
+            <option>USDT</option>
+            <option>USDC</option>
+            <option>DAI</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label class="block text-sm font-medium">Amount</label>
+        <input id="amountInput" type="number" class="w-full border rounded px-3 py-2" placeholder="0.0">
+      </div>
+
+      <button id="acceptBtn" class="w-full mt-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 px-4 rounded-lg flex items-center justify-center space-x-2">
+        <i data-feather="send" class="w-5 h-5"></i>
+        <span>Accept Intent</span>
+      </button>
+    </section>
+  </main>
+
+  <!-- Popup for username -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <label>Enter Username:</label>
+      <input id="usernameInput" type="text" placeholder="Username">
+      <button id="confirmBtn">Confirm</button>
+    </div>
+  </div>
+
+  <!-- Success Popup -->
+  <div id="successPopup" class="popup hidden">
+    <div class="popup-content">
+      <h3 id="successMsg"></h3>
+      <button onclick="document.getElementById('successPopup').classList.add('hidden')">Close</button>
+    </div>
+  </div>
+
+  <script>
+    feather.replace();
+
+    const acceptBtn = document.getElementById('acceptBtn');
+    const popup = document.getElementById('popup');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const usernameInput = document.getElementById('usernameInput');
+    const successPopup = document.getElementById('successPopup');
+    const successMsg = document.getElementById('successMsg');
+
+    acceptBtn.addEventListener('click', () => {
+      popup.classList.remove('hidden');
+    });
+
+    confirmBtn.addEventListener('click', () => {
+      const username = usernameInput.value || "Anonymous";
+      const amount = document.getElementById('amountInput').value || "0";
+      const ticker = document.getElementById('fromTicker').value;
+      successMsg.innerText = `✅ Successfully sent ${amount} ${ticker} to ${username}`;
+      popup.classList.add('hidden');
+      successPopup.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
