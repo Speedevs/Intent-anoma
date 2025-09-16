@@ -1,5 +1,5 @@
 
-# Intent-anoma
+# Intent-anoma (https://speedevs.github.io/Intent-anoma/)
 
 
 # Intent-anoma: Anoma Stable Intent Bridge (SIB)
@@ -76,5 +76,6 @@ SIB introduces a mechanism to wrap BTC, ETH, and USDC into a single stable token
 
 ## Screenshots
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://raw.githubusercontent.com/Speedevs/Intent-anoma/refs/heads/main/Screenshot_20250916_100009_Gallery.jpg)
+
 
 
