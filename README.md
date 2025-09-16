@@ -76,7 +76,8 @@ SIB introduces a mechanism to wrap BTC, ETH, and USDC into a single stable token
 2. Open `index.html` in your browser
 3. Enter asset amounts and mint SIT
 4. Declare payment intents and simulate settlements
+
 5. Unwrap SIT to redeem assets
 
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://raw.githubusercontent.com/Speedevs/Intent-anoma/refs/heads/main/IMG-20250915-WA0071.jpg)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://raw.githubusercontent.com/Speedevs/Intent-anoma/refs/heads/main/Screenshot_20250916_100009_Gallery.jpg)
