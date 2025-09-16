@@ -66,20 +66,15 @@ SIB introduces a mechanism to wrap BTC, ETH, and USDC into a single stable token
 - Implement secure wallet and cross-chain settlement
 - Expand composability for advanced DeFi and DAO use cases
 
-
-
-
-
 ## Getting Started
 
 1. Clone the repository
 2. Open `index.html` in your browser
 3. Enter asset amounts and mint SIT
 4. Declare payment intents and simulate settlements
-
 5. Unwrap SIT to redeem assets
 
 ## Screenshots
-
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://raw.githubusercontent.com/Speedevs/Intent-anoma/refs/heads/main/Screenshot_20250916_100009_Gallery.jpg)
+
 
